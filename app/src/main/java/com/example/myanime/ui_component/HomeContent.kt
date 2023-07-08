@@ -36,6 +36,8 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
+import com.example.myanime.Routes
 import com.example.myanime.model.Anime
 import com.example.myanime.model.MenuItem
 
@@ -93,7 +95,8 @@ fun AnimeCard(
 
 @Composable
 fun AnimeContentList(
-    anime: List<Anime>
+    anime: List<Anime>,
+    navController: NavController
 ){
     Column {
         Box(modifier = Modifier
@@ -109,7 +112,11 @@ fun AnimeContentList(
             itemsIndexed(anime) {
                     index, anime -> AnimeCard(anime = anime,
                 modifier = Modifier
-                    .padding(horizontal = 16.dp, vertical = 8.dp))
+                    .padding(horizontal = 16.dp, vertical = 8.dp)
+                    .clickable {
+                        println("Clicked on ")
+                        navController.navigate(Routes.Play.route)
+                    })
             }
         }
     }

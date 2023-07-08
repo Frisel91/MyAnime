@@ -102,7 +102,7 @@ fun Home(navController: NavHostController) {
         )
 
         {
-            AnimeContentList(anime = AnimeRepository.anime)
+            AnimeContentList(anime = AnimeRepository.anime, navController)
         }
     }
 

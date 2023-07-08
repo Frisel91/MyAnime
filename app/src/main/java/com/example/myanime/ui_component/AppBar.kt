@@ -7,6 +7,8 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material.icons.filled.Person
@@ -37,14 +39,19 @@ fun AppBar(
             Row(horizontalArrangement = Arrangement.SpaceBetween,
                 verticalAlignment = Alignment.CenterVertically) {
                 Image(painter = painterResource(id = R.drawable.logo), contentDescription = "logo",
-                    Modifier.clickable { navController.navigate(Routes.Home.route)})
+                    Modifier.size(120.dp)
+                        .clickable { navController.navigate(Routes.Home.route)})
                 Spacer(modifier = Modifier.weight(0.5f))
-                Image(painter = painterResource(id = R.drawable.discord2), contentDescription = "discord" )
+                Image(painter = painterResource(id = R.drawable.discord2), contentDescription = "discord",
+                    Modifier.size(30.dp))
                 Spacer(modifier = Modifier.padding(15.dp))
                 Image(imageVector = Icons.Default.Person, contentDescription = "LK",
-                    Modifier.clickable { navController.navigate(Routes.Profile.route)})
+                    Modifier.size(30.dp)
+                        .clickable { navController.navigate(Routes.Profile.route)})
                 Spacer(modifier = Modifier.padding(15.dp))
-                Image(imageVector = Icons.Default.Search, contentDescription = "Search")
+                Image(imageVector = Icons.Default.Search, contentDescription = "Search",
+                    Modifier.size(30.dp)
+                        .clickable { navController.navigate(Routes.Play.route)})
                 Spacer(modifier = Modifier.padding(10.dp))
             }
 

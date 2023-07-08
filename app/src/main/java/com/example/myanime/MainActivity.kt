@@ -1,5 +1,6 @@
 package com.example.myanime
 
+import android.content.Context
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -17,6 +18,8 @@ import com.example.myanime.ui.theme.MyAnimeTheme
 import com.example.myanime.ui_component.Home
 import com.example.myanime.ui_component.Play
 import com.example.myanime.ui_component.Profile
+import com.google.android.exoplayer2.ExoPlayer
+import com.google.android.exoplayer2.MediaItem
 import kotlinx.coroutines.CoroutineScope
 
 class MainActivity : ComponentActivity() {
@@ -57,14 +60,16 @@ fun ScreenMain() {
         }
 
         //Settings Route, Notice the "/{id}" in last, its the argument passed down from homeScreen
-        composable(Routes.Play.route + "/{id}") { navBackStack ->
+        composable(Routes.Play.route) {
 
-            //Extracting the argument
-            val counter = navBackStack.arguments?.getString("id")
-
-            //Setting screen, Pass the extracted Counter
-            Play(counter = counter)
+            Play(navController)
 
         }
     }
+}
+
+fun provideExoPlayer(context : Context, mediaItem: MediaItem): ExoPlayer {
+    val player = ExoPlayer.Builder(context).build()
+    player.setMediaItem(mediaItem)
+    return player
 }
