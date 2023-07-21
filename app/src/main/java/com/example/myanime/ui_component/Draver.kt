@@ -30,9 +30,7 @@ import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun Draver(
-    navController: NavController
-) {
+fun Draver() {
     val items = listOf(
         MenuItem(
             id = "janr",
