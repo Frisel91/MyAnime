@@ -26,75 +26,7 @@ import com.example.myanime.model.MenuItem
 import kotlinx.coroutines.launch
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun Profile(navController: NavHostController) {
-    val scope = rememberCoroutineScope()
-    val drawerState = rememberDrawerState(initialValue = DrawerValue.Closed)
 
-
-    ModalNavigationDrawer(
-        drawerState = drawerState,
-        drawerContent = {
-            ModalDrawerSheet {
-                DrawerBody(items = listOf(
-                    MenuItem(
-                        id = "janr",
-                        title = "Жанры",
-                        icon = Icons.Default.Home
-                    ),
-                    MenuItem(
-                        id = "type",
-                        title = "Тип",
-                        icon = Icons.Default.Info
-                    ),
-                    MenuItem(
-                        id = "ongoing",
-                        title = "Онгоинги",
-                        icon = Icons.Default.Info
-                    ),
-                    MenuItem(
-                        id = "2023",
-                        title = "2023",
-                        icon = Icons.Default.Info
-                    ),
-                    MenuItem(
-                        id = "game",
-                        title = "Игры",
-                        icon = Icons.Default.Info
-                    ),
-                    MenuItem(
-                        id = "raspisanie",
-                        title = "Расписание",
-                        icon = Icons.Default.Info
-                    ),
-                    MenuItem(
-                        id = "zakladki",
-                        title = "Закладки",
-                        icon = Icons.Default.Info
-                    ),
-                ), onItemClick = {
-                    println("Clicked on ${it.title}")
-                })
-            }
-        }) {
-        Scaffold(topBar = {
-            AppBar(navController,
-                onNavigationIconClick = {
-                    scope.launch {
-                        drawerState.apply {
-                            if (isClosed) open() else close()
-                        }
-                    }
-                }
-            )
-        }
-        )
-
-        {
-
-        }
-        Text(text = "Здесь будет страница профиля"
-        ,Modifier.padding(vertical = 100.dp))
-    }
 }
